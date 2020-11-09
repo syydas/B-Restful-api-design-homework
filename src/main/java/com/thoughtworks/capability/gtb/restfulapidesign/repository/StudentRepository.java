@@ -14,4 +14,11 @@ public class StudentRepository {
     public void addStudent(Student student) {
         students.add(student);
     }
+
+    public Student findById(int id) {
+        return students.stream()
+                .filter(student -> student.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
 }
