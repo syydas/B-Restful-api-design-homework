@@ -57,4 +57,8 @@ public class StudentService {
             throw new StudentNotFoundException("This student doesn't exist");
         }
     }
+
+    public List<Student> findAllStudents() {
+        return studentRepository.getStudents();
+    }
 }

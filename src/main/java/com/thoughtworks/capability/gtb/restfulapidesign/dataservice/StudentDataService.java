@@ -5,6 +5,6 @@ import com.thoughtworks.capability.gtb.restfulapidesign.model.Student;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DataService {
+public class StudentDataService {
     public static List<Student> students = new ArrayList<>();
 }

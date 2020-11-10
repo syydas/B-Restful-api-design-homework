@@ -1,9 +1,8 @@
 package com.thoughtworks.capability.gtb.restfulapidesign.repository;
 
-import com.thoughtworks.capability.gtb.restfulapidesign.dataservice.DataService;
+import com.thoughtworks.capability.gtb.restfulapidesign.dataservice.StudentDataService;
 import com.thoughtworks.capability.gtb.restfulapidesign.model.Gender;
 import com.thoughtworks.capability.gtb.restfulapidesign.model.Student;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.stereotype.Repository;
 
@@ -14,7 +13,7 @@ import java.util.stream.Collectors;
 @Data
 public class StudentRepository {
 
-    private final List<Student> students = DataService.students;
+    private final List<Student> students = StudentDataService.students;
 
     public void addStudent(Student student) {
         students.add(student);
