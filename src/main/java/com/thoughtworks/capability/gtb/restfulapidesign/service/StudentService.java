@@ -2,9 +2,12 @@ package com.thoughtworks.capability.gtb.restfulapidesign.service;
 
 import com.thoughtworks.capability.gtb.restfulapidesign.expection.StudentExistsException;
 import com.thoughtworks.capability.gtb.restfulapidesign.expection.StudentNotFoundException;
+import com.thoughtworks.capability.gtb.restfulapidesign.model.Gender;
 import com.thoughtworks.capability.gtb.restfulapidesign.model.Student;
 import com.thoughtworks.capability.gtb.restfulapidesign.repository.StudentRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class StudentService {
@@ -29,5 +32,13 @@ public class StudentService {
         } else {
             throw new StudentNotFoundException("This student doesn't exist");
         }
+    }
+
+    public List<Student> findByGender(Gender gender) {
+        List<Student> students = studentRepository.findByGender(gender);
+        if (students.size() == 0) {
+            return studentRepository.getStudents();
+        }
+        return students;
     }
 }
