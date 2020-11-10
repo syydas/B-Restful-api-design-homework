@@ -41,4 +41,12 @@ public class StudentService {
         }
         return students;
     }
+
+    public Student findById(int id) {
+        Student student = studentRepository.findById(id);
+        if (student == null) {
+            throw new StudentNotFoundException("This student doesn't exist");
+        }
+        return student;
+    }
 }
