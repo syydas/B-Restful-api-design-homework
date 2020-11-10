@@ -29,4 +29,10 @@ public class GlobalExceptionHandler {
         ErrorResult errorResult = new ErrorResult(e.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResult);
     }
+
+    @ExceptionHandler(TeamNotFoundException.class)
+    public ResponseEntity<ErrorResult> handle(TeamNotFoundException e) {
+        ErrorResult errorResult = new ErrorResult(e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResult);
+    }
 }

@@ -17,4 +17,15 @@ public class TeamRepository {
         teams.forEach(team -> team.setStudents(new ArrayList<>()));
         return teams;
     }
+
+    public void updateTeam(Team team, String name) {
+        team.setName(name);
+    }
+
+    public Team findById(int id) {
+        return teams.stream()
+                .filter(student -> student.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
 }

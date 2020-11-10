@@ -1,11 +1,11 @@
 package com.thoughtworks.capability.gtb.restfulapidesign.controller;
 
+import com.thoughtworks.capability.gtb.restfulapidesign.controller.dto.TeamUpdateDto;
 import com.thoughtworks.capability.gtb.restfulapidesign.model.Team;
 import com.thoughtworks.capability.gtb.restfulapidesign.service.TeamService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -21,5 +21,10 @@ public class TeamController {
     @GetMapping
     public List<Team> groupingStudents() {
         return teamService.separateTeams();
+    }
+
+    @PatchMapping
+    public void updateStudent(@RequestBody @Valid TeamUpdateDto teamUpdateDto) {
+        teamService.updateTeam(teamUpdateDto.getId(), teamUpdateDto.getName());
     }
 }

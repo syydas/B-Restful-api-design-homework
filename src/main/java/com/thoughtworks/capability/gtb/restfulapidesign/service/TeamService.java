@@ -1,5 +1,6 @@
 package com.thoughtworks.capability.gtb.restfulapidesign.service;
 
+import com.thoughtworks.capability.gtb.restfulapidesign.expection.TeamNotFoundException;
 import com.thoughtworks.capability.gtb.restfulapidesign.model.Student;
 import com.thoughtworks.capability.gtb.restfulapidesign.model.Team;
 import com.thoughtworks.capability.gtb.restfulapidesign.repository.TeamRepository;
@@ -30,5 +31,14 @@ public class TeamService {
             teams.get(stuIndex % teams.size()).getStudents().add(students.get(stuIndex));
         }
         return teams;
+    }
+
+    public void updateTeam(int id, String name) {
+        Team team = teamRepository.findById(id);
+        if (team != null) {
+            teamRepository.updateTeam(team, name);
+        } else {
+            throw new TeamNotFoundException("This team doesn't exist");
+        }
     }
 }
