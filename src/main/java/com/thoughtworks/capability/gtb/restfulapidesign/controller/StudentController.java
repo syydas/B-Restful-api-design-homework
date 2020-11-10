@@ -40,4 +40,10 @@ public class StudentController {
     public Student getStudentById(@PathVariable int id) {
         return studentService.findById(id);
     }
+
+    @PatchMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public void updateStudent(@RequestBody @Valid Student student) {
+        studentService.updateStudent(student);
+    }
 }

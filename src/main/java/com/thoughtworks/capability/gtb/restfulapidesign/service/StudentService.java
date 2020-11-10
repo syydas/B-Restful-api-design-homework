@@ -49,4 +49,12 @@ public class StudentService {
         }
         return student;
     }
+
+    public void updateStudent(Student student) {
+        if (studentRepository.findById(student.getId()) != null) {
+            studentRepository.updateStudent(student);
+        } else {
+            throw new StudentNotFoundException("This student doesn't exist");
+        }
+    }
 }

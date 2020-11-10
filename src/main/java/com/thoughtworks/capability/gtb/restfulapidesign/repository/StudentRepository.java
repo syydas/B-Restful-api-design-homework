@@ -36,4 +36,9 @@ public class StudentRepository {
                 .filter(student -> student.getGender().equals(gender))
                 .collect(Collectors.toList());
     }
+
+    public void updateStudent(Student student) {
+        students.removeIf(stu -> stu.getId() == student.getId());
+        students.add(student);
+    }
 }
