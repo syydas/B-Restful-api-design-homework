@@ -23,4 +23,10 @@ public class GlobalExceptionHandler {
         ErrorResult errorResult = new ErrorResult(e.getMessage());
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResult);
     }
+
+    @ExceptionHandler(StudentNotFoundException.class)
+    public ResponseEntity<ErrorResult> handle(StudentNotFoundException e) {
+        ErrorResult errorResult = new ErrorResult(e.getMessage());
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorResult);
+    }
 }

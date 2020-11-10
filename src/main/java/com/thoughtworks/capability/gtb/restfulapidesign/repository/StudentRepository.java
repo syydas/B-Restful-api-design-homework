@@ -21,4 +21,8 @@ public class StudentRepository {
                 .findFirst()
                 .orElse(null);
     }
+
+    public void deleteStudent(int id) {
+        students.remove(findById(id));
+    }
 }

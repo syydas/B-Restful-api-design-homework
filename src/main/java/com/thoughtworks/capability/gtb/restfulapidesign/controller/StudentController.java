@@ -22,4 +22,10 @@ public class StudentController {
     public void addStudent(@RequestBody @Valid Student student) {
         studentService.addStudent(student);
     }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteStudent(@PathVariable int id) {
+        studentService.deleteStudent(id);
+    }
 }

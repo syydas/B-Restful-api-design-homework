@@ -1,6 +1,7 @@
 package com.thoughtworks.capability.gtb.restfulapidesign.service;
 
 import com.thoughtworks.capability.gtb.restfulapidesign.expection.StudentExistsException;
+import com.thoughtworks.capability.gtb.restfulapidesign.expection.StudentNotFoundException;
 import com.thoughtworks.capability.gtb.restfulapidesign.model.Student;
 import com.thoughtworks.capability.gtb.restfulapidesign.repository.StudentRepository;
 import org.springframework.stereotype.Service;
@@ -20,6 +21,13 @@ public class StudentService {
         } else {
             throw new StudentExistsException("This student already exist");
         }
+    }
 
+    public void deleteStudent(int id) {
+        if (studentRepository.findById(id) != null) {
+            studentRepository.deleteStudent(id);
+        } else {
+            throw new StudentNotFoundException("This student doesn't exist");
+        }
     }
 }
