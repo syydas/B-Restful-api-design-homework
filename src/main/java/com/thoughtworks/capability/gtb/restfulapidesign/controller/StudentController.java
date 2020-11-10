@@ -42,7 +42,6 @@ public class StudentController {
     }
 
     @PatchMapping
-    @ResponseStatus(HttpStatus.CREATED)
     public void updateStudent(@RequestBody @Valid Student student) {
         studentService.updateStudent(student);
     }
